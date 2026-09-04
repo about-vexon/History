@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تاریخ‌نامه | آرشیو شخصیت‌ها و وقایع</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-time">
+            <p id="historical-clock">۱۲:۰۰:۰۰</p>
+        </div>
+    
+        <div class="header-center">
+            <h1 class="site-title">📜 تاریخ‌نامه</h1>
+            <p class="site-subtitle">آرشیو زندگی شخصیت‌های بزرگ و وقایع مهم جهان</p>
+            <button class="random-btn" onclick="openRandom()">🎲 کاوش تصادفی</button>
+        </div>
+    
+        <div class="header-date">
+            <p id="gregorian-date">January 1, 2026</p>
+            <p id="jalali-date">۱ ژانویه ۲۰۲۶</p>
+        </div>
+    </header>
+        <!-- بخش نقل قول روز -->
+        <div class="quote-section">
+            <h2 class="quote-title">💬 نقل قول روز</h2>
+            <p class="quote-text" id="daily-quote"></p>
+            <p class="quote-author" id="quote-author"></p>
+        </div>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="جستجو در تاریخ... (مثلاً: مسی، جنگ جهانی، هیتلر)">
+    </div>
+
+    <section class="section">
+        <h2 class="section-title">👤 شخصیت‌های تاریخی</h2>
+        <div class="horizontal-scroll" id="people-scroll"></div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">⚔️ وقایع مهم تاریخ</h2>
+        <div class="horizontal-scroll" id="events-scroll"></div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">🔬 علم و دانش</h2>
+        <div class="horizontal-scroll" id="science-scroll"></div>
+    </section>
+
+    <!-- لایه کشورها (زیر علم و دانش) -->
+    <section class="section">
+        <h2 class="section-title">🌍 جهان ما</h2>
+        <div class="horizontal-scroll" id="countries-scroll"></div>
+    </section>
+    <!-- بخش نقشه تاریخی جهان -->
+    <section class="section">
+        <h2 class="section-title">📍 نقشه تاریخی جهان</h2>
+        
+        <!-- دکمه باز کردن نقشه -->
+        <div class="map-toggle-container">
+            <button class="map-open-btn" id="map-open-btn" onclick="openMap()">🗺️ باز کردن نقشه</button>
+        </div>
+
+        <!-- نقشه (ابتدا مخفی است) -->
+        <div id="historical-map-wrapper" style="display: none;">
+            <div class="map-close-container">
+                <button class="map-close-btn" id="map-close-btn" onclick="closeMap()">✕ بستن نقشه</button>
+            </div>
+            <div id="historical-map" style="height: 500px; width: 100%; border-radius: 15px; border: 2px solid #d4af37;"></div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p class="footer-line-1">❤️ به یاد تمام جاوید نام‌های عزیز ❤️</p>
+        <p class="footer-line-2">id=@TheVeXoN iG=ss.ali.nn</p>
+    </footer>
+    <script src="data-countries.js"></script>
+    <script src="data-people.js"></script>
+    <script src="data-events.js"></script>
+    <script src="data-science.js"></script>
+    <script src="data-quotes.js"></script>
+    <script src="data-map.js"></script>
+    <script src="script.js"></script>
+        <!-- کتابخانه نقشه Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <div id="detail-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeModal()">✕</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+</body>
+</html>
