@@ -635,92 +635,82 @@ body {
 .search-container {
     position: relative;
 }
-/* ====== تنظیمات موبایل (کوچک کردن همه چیز) ====== */
+/* ====== تنظیمات موبایل (محدود کردن عناصر بزرگ) ====== */
 @media (max-width: 768px) {
-    /* هدر */
-    .site-header {
-        padding: 15px;
-        font-size: 14px;
-    }
-    .site-title {
-        font-size: 24px;
-    }
-    .site-subtitle {
-        font-size: 12px;
-    }
-
-    /* نقل قول روز */
-    .quote-section {
-        padding: 15px;
-        max-width: 90%;
-    }
-    .quote-title {
-        font-size: 16px;
-    }
-    .quote-text {
-        font-size: 14px;
-    }
-
-    /* جستجو */
-    .search-container {
-        margin: 15px 0;
-    }
-    #search-input {
-        font-size: 13px;
-        max-width: 90%;
-    }
-
-    /* کارت‌ها */
+    /* محدود کردن عرض کارت‌ها و عناوین */
     .card {
-        min-width: 150px;
-        max-width: 150px;
-        padding: 15px;
-        font-size: 12px;
+        min-width: 130px;
+        max-width: 130px;
+        padding: 10px;
     }
+    
     .card-title {
-        font-size: 18px;
-        text-align: center;
+        font-size: 14px;
         line-height: 1.2;
+        margin-bottom: 5px;
     }
+    
     .card-date {
+        font-size: 10px;
+    }
+    
+    .country-card {
+        min-width: 130px;
+        max-width: 130px;
+        padding: 8px;
+    }
+    
+    .country-flag {
+        font-size: 30px;
+    }
+    
+    .country-name {
+        font-size: 13px;
+    }
+    
+    /* محدود کردن مودال */
+    .modal-content {
+        max-width: 85%;
+        padding: 10px;
+    }
+    
+    .modal-title {
+        font-size: 20px;
+    }
+    
+    .modal-text {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    
+    .modal-flag {
+        font-size: 50px;
+    }
+    
+    /* محدود کردن هدر و جستجو */
+    .site-header {
+        padding: 10px;
+    }
+    
+    .site-title {
+        font-size: 22px;
+    }
+    
+    .site-subtitle {
         font-size: 11px;
     }
-
-    /* کارت کشورها */
-    .country-card {
-        min-width: 150px;
-        max-width: 150px;
-        padding: 12px;
+    
+    #search-input {
+        max-width: 85%;
+        font-size: 12px;
     }
-    .country-flag {
-        font-size: 40px;
+    
+    .quote-section {
+        max-width: 85%;
+        padding: 10px;
     }
-    .country-name {
-        font-size: 16px;
-    }
-
-    /* مودال (پنجره اطلاعات) */
-    .modal-content {
-        max-width: 90%;
-        padding: 15px;
-    }
-    .modal-title {
-        font-size: 24px;
-    }
-    .modal-text {
-        font-size: 14px;
-        line-height: 1.8;
-    }
-    .modal-flag {
-        font-size: 60px;
-    }
-
-    /* نقشه */
-    #historical-map {
-        height: 300px;
-    }
-    .map-open-btn {
-        font-size: 16px;
-        padding: 15px;
+    
+    .quote-text {
+        font-size: 12px;
     }
 }
