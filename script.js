@@ -84,7 +84,7 @@ function openCountryModal(country) {
 // ====== افکت تایپ متن ======
 let typewriterInterval = null;
 
-function typeText(element, text, speed = 30) {
+function typeText(element, text, speed = 15) {
     if (typewriterInterval) clearInterval(typewriterInterval);
     
     element.textContent = '';
@@ -103,10 +103,20 @@ function typeText(element, text, speed = 30) {
 
 // ====== بستن مودال ======
 function closeModal() {
+    const modal = document.getElementById('detail-modal');
+    
+    // پاک کردن تایمر تایپ
     if (typewriterInterval) clearInterval(typewriterInterval);
     typewriterInterval = null;
     
-    document.getElementById('detail-modal').classList.remove('show');
+    // اضافه کردن کلاس انیمیشن خروج
+    modal.classList.add('closing');
+    
+    // بعد از 0.3 ثانیه (زمان انیمیشن) آن را مخفی کن
+    setTimeout(() => {
+        modal.classList.remove('show');
+        modal.classList.remove('closing');
+    }, 300);
 }
 
 // ====== کاوش تصادفی ======
@@ -199,13 +209,20 @@ function openMap() {
 }
 
 // ====== بستن نقشه ======
+// ====== بستن نقشه (فوری، بدون تاخیر) ======
 function closeMap() {
+    const wrapper = document.getElementById('historical-map-wrapper');
+    
+    // مخفی کردن فوری
+    wrapper.style.display = 'none';
+    
+    // حذف نقشه
     if (myMap) {
         myMap.remove();
         myMap = null;
     }
     
-    document.getElementById('historical-map-wrapper').style.display = 'none';
+    // برگرداندن فوری دکمه
     document.getElementById('map-open-btn').style.display = 'block';
 }
 
@@ -586,11 +603,16 @@ function openTimeline() {
     }
 }
 
+// ====== بستن تایم‌لاین (فوری، بدون تاخیر) ======
 function closeTimeline() {
+    const wrapper = document.getElementById('timeline-wrapper');
+    
+    // مخفی کردن فوری
+    wrapper.style.display = 'none';
+    
+    // برگرداندن فوری دکمه
     document.getElementById('timeline-open-btn').style.display = 'block';
-    document.getElementById('timeline-wrapper').style.display = 'none';
 }
-
 function renderTimeline() {
     const timelineContainer = document.getElementById('timeline-items');
     timelineContainer.innerHTML = '';
