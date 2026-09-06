@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-21KTKETYZT"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21KTKETYZT"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -16,7 +18,13 @@
 </script>
 </head>
 <body>
+        <!-- ذرات غبار زمان -->
+        <div id="particles"></div>
 
+    <!-- هیرو جدید -->
+
+
+    <!-- هدر اطلاعات (زمان و دکمه‌ها) -->
     <header class="site-header">
         <div class="header-time">
             <p id="historical-clock">۱۲:۰۰:۰۰</p>
@@ -40,9 +48,36 @@
             <p class="quote-author" id="quote-author"></p>
         </div>
 
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="جستجو در تاریخ... (مثلاً: مسی، جنگ جهانی، هیتلر)">
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="جستجو در تاریخ... (مثلاً: کوروش، جنگ جهانی، هیتلر)">
+        </div>
+        
+    <!-- بخش بازی حدس بزن -->
+    <div class="game-section">
+        <h2 class="section-title"> حدس بزن کی هستم!</h2>
+        <div class="game-box">
+            <!-- دکمه شروع بازی -->
+            <button class="game-btn animated-btn" id="game-start-btn" onclick="initGuessGame()">حدس بزن!</button>
+            
+            <!-- عناصر بازی که بعد از شروع نمایش داده می‌شوند -->
+            <div id="game-content" style="display: none;">
+                <button class="game-btn back-game-btn" onclick="closeGuessGame()">← بازگشت</button>
+                <p id="game-question" style="font-size: 18px; color: #e6d5b8; text-align: center; margin-bottom: 15px;"></p>
+                <input type="text" id="game-input" placeholder="نام شخص را حدس بزن...">
+                <button class="game-btn" onclick="checkGuess()">حدس بزن</button>
+                
+                <!-- دکمه بلد نیستم -->
+                <button class="game-btn hint-btn" onclick="showHint()">بلد نیستم!</button>
+                
+                <!-- دکمه سوال بعدی -->
+                <button class="game-btn next-game-btn" onclick="nextGuessQuestion()">سوال بعدی →</button>
+                
+                <p class="game-result" id="game-result"></p>
+            </div>
+        </div>
     </div>
+
 
     <section class="section">
         <h2 class="section-title">👤 شخصیت‌های تاریخی</h2>
@@ -68,11 +103,10 @@
     <section class="section">
         <h2 class="section-title">📍 نقشه تاریخی جهان</h2>
         
-        <!-- دکمه باز کردن نقشه -->
-        <div class="map-toggle-container">
-            <button class="map-open-btn" id="map-open-btn" onclick="openMap()">🗺️ باز کردن نقشه</button>
-        </div>
-
+<!-- دکمه باز کردن نقشه -->
+<div class="map-toggle-container">
+    <button class="map-open-btn" id="map-open-btn" onclick="openMap()">🗺️ باز کردن نقشه</button>
+</div>
         <!-- نقشه (ابتدا مخفی است) -->
         <div id="historical-map-wrapper" style="display: none;">
             <div class="map-close-container">
@@ -81,7 +115,26 @@
             <div id="historical-map" style="height: 500px; width: 100%; border-radius: 15px; border: 2px solid #d4af37;"></div>
         </div>
     </section>
-
+    <!-- بخش تایم‌لاین تاریخی (زیر نقشه) -->
+    <section class="section timeline-section">
+        <h2 class="section-title">📜 تایم‌لاین تاریخی</h2>
+        <div class="timeline-toggle-container">
+            <button class="timeline-open-btn" id="timeline-open-btn" onclick="openTimeline()">باز کردن تایم‌لاین</button>
+        </div>
+        
+        <!-- تایم‌لاین (مخفی است) -->
+        <div id="timeline-wrapper" style="display: none;">
+            <div class="timeline-close-container">
+                <button class="timeline-close-btn" onclick="closeTimeline()">✕ بستن</button>
+            </div>
+            <div class="timeline-horizontal-container">
+                <div class="timeline-horizontal-line"></div>
+                <div id="timeline-items" class="timeline-horizontal-items">
+                    <!-- آیتم‌ها توسط JS ساخته می‌شوند -->
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="site-footer">
         <p class="footer-line-1">❤️ به یاد تمام جاوید نام‌های عزیز ❤️</p>
         <p class="footer-line-2">id=@TheVeXoN iG=ss.ali.nn</p>
@@ -92,15 +145,19 @@
     <script src="data-science.js"></script>
     <script src="data-quotes.js"></script>
     <script src="data-map.js"></script>
-    <script src="script.js"></script>
+    <script src="data-game.js"></script>
+    <script src="data-timeline.js"></script>
+<script src="script.js"></script>
+   
+
         <!-- کتابخانه نقشه Leaflet -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
         <div id="detail-modal" class="modal">
             <div class="modal-content">
                 <button class="close-btn" onclick="closeModal()">✕</button>
                 <div id="modal-body"></div>
             </div>
         </div>
+        
 </body>
 </html>

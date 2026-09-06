@@ -8,18 +8,24 @@
 
 body {
     font-family: 'Vazirmatn', sans-serif;
-    background: radial-gradient(circle at 50% 10%, #4a3520 0%, #2a231c 50%, #1a120b 100%);
+    background-color: #1a120b;
+    background-image: 
+        /* لایه 1: گرادیان عمیق برای عمق */
+        radial-gradient(circle at 50% 0%, rgba(74, 53, 32, 0.6) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+        /* لایه 2: بافت سنگی */
+        url('https://www.transparenttextures.com/patterns/dark-matter.png'),
+        /* لایه 3: بافت کاغذی */
+        url('https://www.transparenttextures.com/patterns/black-scales.png');
+    background-size: cover, cover, cover, auto, auto;
+    background-blend-mode: overlay, overlay, overlay, multiply, normal;
     color: #e6d5b8;
     min-height: 100vh;
     padding-bottom: 50px;
 }
 
-.site-header {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(180deg, rgba(212, 175, 55, 0.15), transparent);
-    border-bottom: 3px solid #a67c52;
-}
+
 
 .site-title {
     font-size: 42px;
@@ -212,18 +218,23 @@ body {
 }
 
 .modal-content {
-    background: linear-gradient(145deg, #4a3520, #3a2e22);
+    /* بافت کاغذ قدیمی */
+    background: linear-gradient(145deg, #4a3520 0%, #3a2e22 50%, #2a231c 100%), 
+                url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    background-blend-mode: multiply;
     border: 3px solid #d4af37;
-    border-radius: 20px;
-    padding: 50px;
-    max-width: 850px;
-    width: 95%;
-    max-height: 90vh;
+    border-radius: 25px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 0 80px rgba(212, 175, 55, 0.3);
+    box-shadow: 
+        0 0 50px rgba(212, 175, 55, 0.4),
+        0 0 80px rgba(212, 175, 55, 0.2),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
     animation: scaleUp 0.4s ease;
-    text-align: center;
 }
 
 @keyframes fadeIn {
@@ -245,32 +256,43 @@ body {
 .close-btn {
     position: absolute;
     top: 15px;
-    right: 20px;
-    font-size: 28px;
+    right: 15px;
+    font-size: 30px;
     color: #d4af37;
     background: none;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+.close-btn:hover {
+    color: #fff;
 }
 
 .modal-title {
-    font-size: 48px;
+    font-size: 38px;
     font-weight: 900;
     color: #d4af37;
-    margin-bottom: 25px;
+    text-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.3);
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .modal-text {
-    line-height: 2;
+    line-height: 1.8;
     color: #e6d5b8;
     text-align: justify;
-    font-size: 20px;
-    padding: 0 20px;
+    font-size: 16px;
+    padding: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .modal-flag {
-    font-size: 100px;
+    font-size: 80px;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -293,28 +315,42 @@ body {
 
 .close-btn {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 15px;
-    font-size: 24px;
+    font-size: 30px;
     color: #d4af37;
     background: none;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #fff;
 }
 
 .modal-title {
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 900;
     color: #d4af37;
-    margin-bottom: 15px;
+    text-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.3);
+    margin-bottom: 20px;
     text-align: center;
 }
+
 
 .modal-text {
     line-height: 1.8;
     color: #e6d5b8;
     text-align: justify;
     font-size: 16px;
+    padding: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .modal-flag {
@@ -322,7 +358,6 @@ body {
     text-align: center;
     margin-bottom: 20px;
 }
-
 .site-footer {
     width: 100%;
     max-width: 1200px;
@@ -384,68 +419,9 @@ body {
     text-align: center;
     margin-bottom: 20px;
 }
-/* ====== هدر با ساعت و تاریخ ====== */
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 40px;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 3px solid #a67c52;
-}
 
-.header-center {
-    text-align: center;
-    flex: 1;
-}
 
-.header-time {
-    width: 150px;
-    text-align: left;
-}
 
-.header-date {
-    width: 150px;
-    text-align: right;
-}
-
-.time-label {
-    font-size: 10px;
-    color: #b08d57;
-}
-
-#historical-clock {
-    font-size: 28px;
-    font-weight: 900;
-    color: #d4af37;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-}
-
-#gregorian-date {
-    font-size: 16px;
-    color: #d4af37;
-    font-weight: 700;
-}
-
-#jalali-date {
-    font-size: 14px;
-    color: #b08d57;
-    margin-top: 5px;
-}
-
-/* تنظیمات برای گوشی موبایل */
-@media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        padding: 20px;
-        gap: 20px;
-    }
-
-    .header-time, .header-date {
-        width: 100%;
-        text-align: center;
-    }
-}
 /* ====== نقل قول روز ====== */
 .quote-section {
     display: flex;
@@ -466,16 +442,18 @@ body {
     margin-bottom: 15px;
 }
 
+/* ====== بزرگ‌تر کردن متن نقل قول روز ====== */
+/* ====== بزرگ‌تر کردن متن نقل قول روز ====== */
 .quote-text {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 30px; /* این عدد را افزایش دادیم تا متن واقعاً بزرگ شود */
+    line-height: 1.7;
     color: #e6d5b8;
     text-align: center;
-    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .quote-author {
-    font-size: 14px;
+    font-size: 18px;
     color: #b08d57;
     margin-top: 10px;
     text-align: right;
@@ -638,10 +616,7 @@ body {
 /* ====== تنظیمات موبایل (کوچک کردن همه چیز) ====== */
 @media (max-width: 768px) {
     /* هدر */
-    .site-header {
-        padding: 15px;
-        font-size: 14px;
-    }
+
     .site-title {
         font-size: 24px;
     }
@@ -727,3 +702,1190 @@ body {
     .quote-text {
         font-size: 12px;
     }
+/* ====== بازی حدس بزن ====== */
+.game-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+    max-width: 700px;
+}
+
+.game-box {
+    padding: 30px;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.game-box p {
+    font-size: 18px;
+    color: #e6d5b8;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#game-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    background: transparent;
+    color: #d4af37;
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+}
+
+#game-input::placeholder {
+    color: #a67c52;
+}
+
+.game-btn {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    background: transparent;
+    color: #d4af37;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.4s ease;
+}
+
+
+.game-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+}
+
+.game-result {
+    font-size: 16px;
+    color: #d4af37;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 700;
+}
+/* ====== انیمیشن دکمه حدس بزن ====== */
+.game-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.game-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent 0%, rgba(212, 175, 55, 0.6) 50%, transparent 100%);
+    animation: gameBtnGlow 4s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.game-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+    transform: scale(1.05);
+}
+
+@keyframes gameBtnGlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* ====== انیمیشن دکمه شروع بازی ====== */
+.animated-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent 0%, rgba(212, 175, 55, 0.6) 50%, transparent 100%);
+    animation: gameBtnGlow 4s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes gameBtnGlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* دکمه پاسخ بدون انیمیشن (فقط هاور) */
+.game-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+    transform: scale(1.05);
+}
+
+/* ====== دکمه بازگشت (تمیز و بدون انیمیشن) ====== */
+.back-game-btn {
+    position: absolute;
+    top: -10px; /* بالاتر از کادر بازی */
+    right: 10px;
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #a67c52;
+    border-radius: 8px;
+    background: transparent;
+    color: #a67c52;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-game-btn:hover {
+    background: #a67c52;
+    color: #2a231c;
+}
+
+.back-game-btn:hover {
+    background: #a67c52;
+    color: #2a231c;
+}
+/* ====== انیمیشن دکمه حدس بزن (نئون ضربان‌دار) ====== */
+.game-btn {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #d4af37;
+    transition: all 0.4s ease;
+}
+
+.game-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 45%, rgba(212, 175, 55, 0.4) 50%, transparent 55%);
+    animation: gameBtnShine 2s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.game-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+    transform: scale(1.05);
+}
+
+.game-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes gameBtnShine {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+/* ====== دکمه بازگشت ====== */
+.back-game-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.back-game-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    animation: none;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ====== دکمه بلد نیستم ====== */
+.hint-btn {
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #a67c52;
+    border-radius: 8px;
+    background: transparent;
+    color: #a67c52;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.hint-btn:hover {
+    background: #a67c52;
+    color: #2a231c;
+}
+/* ====== دکمه سوال بعدی ====== */
+.next-game-btn {
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #a67c52;
+    border-radius: 8px;
+    background: transparent;
+    color: #a67c52;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.next-game-btn:hover {
+    background: #a67c52;
+    color: #2a231c;
+}
+/* ====== نور نئونی چرخشی (فقط سایه‌های نورانی) ====== */
+.quote-section {
+    position: relative;
+    border: 2px solid #d4af37 !important;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2),
+        0 0 30px rgba(212, 175, 55, 0.1);
+}
+/* ====== نور نئونی دور کادر جستجو ====== */
+.search-container {
+    position: relative;
+}
+
+#search-input {
+    position: relative;
+    border: 2px solid #d4af37 !important;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2),
+        0 0 30px rgba(212, 175, 55, 0.1);
+}
+.game-section .section-title {
+    border-right: none;
+    padding-right: 0;
+}
+/* ====== تایم‌لاین افقی ====== */
+.timeline-section {
+    margin-top: 40px;
+}
+
+.timeline-toggle-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.timeline-open-btn {
+    padding: 20px 40px;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    background: transparent;
+    color: #d4af37;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.timeline-open-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+    transform: scale(1.05);
+}
+
+.timeline-close-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.timeline-close-btn {
+    padding: 10px 20px;
+    border: 2px solid #a67c52;
+    border-radius: 8px;
+    background: transparent;
+    color: #a67c52;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-close-btn:hover {
+    background: #a67c52;
+    color: #2a231c;
+}
+
+.timeline-horizontal-container {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    padding: 30px 20px;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #2a231c;
+}
+
+.timeline-horizontal-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #d4af37, #a67c52);
+    border-radius: 10px;
+}
+
+.timeline-horizontal-items {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* ====== آیتم تایم‌لاین ====== */
+.timeline-item {
+    position: relative;
+    min-width: 180px;
+    max-width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2a231c;
+    border: 3px solid #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-item:hover::before {
+    background: #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+}
+
+.timeline-info {
+    background: #2a231c;
+    border: 1px solid #a67c52;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.timeline-info:hover {
+    border-color: #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.timeline-date {
+    font-size: 12px;
+    color: #d4af37;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.timeline-title {
+    font-size: 16px;
+    color: #e6d5b8;
+    font-weight: 900;
+}
+
+/* ====== موبایل ====== */
+@media (max-width: 768px) {
+    .timeline-open-btn {
+        font-size: 14px;
+        padding: 15px;
+    }
+    
+    .timeline-item {
+        min-width: 140px;
+        max-width: 140px;
+    }
+    
+    .timeline-title {
+        font-size: 14px;
+    }
+    
+    .timeline-info {
+        padding: 8px 10px;
+    }
+}
+/* ====== رفع باگ آبی شدن کارت‌ها در موبایل ====== */
+* {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+/* ====== نورانی کردن دکمه‌های باز کردن نقشه و تایم‌لاین ====== */
+.timeline-open-btn {
+    position: relative;
+    border: 2px solid #d4af37 !important;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2),
+        0 0 30px rgba(212, 175, 55, 0.1);
+    transition: all 0.4s ease;
+}
+
+.timeline-open-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.6),
+        0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+.map-open-btn {
+    position: relative;
+    border: 2px solid #d4af37 !important;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2),
+        0 0 30px rgba(212, 175, 55, 0.1);
+    transition: all 0.4s ease;
+}
+
+.map-open-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.6),
+        0 0 40px rgba(212, 175, 55, 0.3);
+}
+/* ====== استایل هماهنگ با پس‌زمینه جدید ====== */
+.section-title {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.card,
+.country-card,
+.timeline-info,
+.quote-section,
+.game-box {
+    background: rgba(42, 35, 28, 0.9);
+    box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
+#search-input {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #4a3520, #3a2e22);
+    box-shadow: 0 0 80px rgba(212, 175, 55, 0.2);
+}
+/* ====== نور نئونی قابل مشاهده برای نقل قول روز ====== */
+.quote-section {
+    position: relative;
+    border: 2px solid #d4af37 !important;
+    box-shadow: 
+        0 0 15px rgba(212, 175, 55, 0.6),
+        0 0 30px rgba(212, 175, 55, 0.3),
+        0 0 50px rgba(212, 175, 55, 0.1);
+}
+/* ====== نور ملایم دور کارت‌ها ====== */
+.card,
+.country-card,
+.timeline-info,
+.game-box {
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    box-shadow: 
+        0 0 5px rgba(212, 175, 55, 0.2),
+        0 0 10px rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover,
+.country-card:hover,
+.timeline-info:hover,
+.game-box:hover {
+    border-color: #d4af37 !important;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.5),
+        0 0 20px rgba(212, 175, 55, 0.2);
+}
+/* ====== نور دور کادر جستجو ====== */
+/* ====== نور دور کادر جستجو (ملایم و دائمی) ====== */
+.search-container {
+    position: relative;
+}
+
+#search-input {
+    position: relative;
+    border: 2px solid rgba(212, 175, 55, 0.6) !important;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* اگر نور در حالت فوکوس هم قطع نشود، این کد را اضافه کنید */
+#search-input:focus {
+    border: 2px solid rgba(212, 175, 55, 0.6) !important;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* ====== نور دور کادر حدس بزن ====== */
+.game-box {
+    position: relative;
+    border: 2px solid rgba(212, 175, 55, 0.5) !important;
+    box-shadow: 
+        0 0 5px rgba(212, 175, 55, 0.3),
+        0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.game-box:hover {
+    border-color: #d4af37 !important;
+    box-shadow: 
+        0 0 15px rgba(212, 175, 55, 0.5),
+        0 0 30px rgba(212, 175, 55, 0.2);
+}
+/* ====== هایلایت نورانی ملایم برای سرفصل‌ها و عنوان سایت ====== */
+.section-title {
+    font-size: 24px;
+    color: #d4af37;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    border-right: 5px solid #a67c52;
+    text-shadow: 
+        0 0 5px rgba(212, 175, 55, 0.3),
+        0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.site-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: #d4af37;
+    text-shadow: 
+        0 0 5px rgba(212, 175, 55, 0.3),
+        0 0 10px rgba(212, 175, 55, 0.2);
+}
+/* ====== مودال تکسچر دار (بازنویسی) ====== */
+.modal-content {
+    background: linear-gradient(145deg, #4a3520 0%, #3a2e22 50%, #2a231c 100%), 
+                url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    background-blend-mode: multiply;
+    border: 3px solid #d4af37;
+    border-radius: 25px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 
+        0 0 50px rgba(212, 175, 55, 0.4),
+        0 0 80px rgba(212, 175, 55, 0.2),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+    animation: scaleUp 0.4s ease;
+}
+
+.modal-title {
+    font-size: 38px;
+    font-weight: 900;
+    color: #d4af37;
+    text-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.3);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-text {
+    line-height: 1.8;
+    color: #e6d5b8;
+    text-align: justify;
+    font-size: 16px;
+    padding: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-flag {
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    color: #d4af37;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+/* ==========================================
+   1. ذرات غبار زمان (پس زمینه)
+   ========================================== */
+   #particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1; /* پشت همه چیز */
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    bottom: -10px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.4); /* طلایی کم رنگ */
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3; /* ظاهر می‌شود */
+    }
+    90% {
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0; /* محو می‌شود */
+    }
+}
+
+/* ==========================================
+   2. Glow نبض‌دار (نور چراغ قدیمی)
+   ========================================== */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5), 0 0 30px rgba(212, 175, 55, 0.25);
+    }
+}
+
+/* اعمال به کادرها و کارت‌ها */
+.card, .country-card, .timeline-info, .game-box, .quote-section, #search-input {
+    animation: pulseGlow 5s ease-in-out infinite; /* هر 5 ثانیه نبض می‌زند */
+}
+
+/* ==========================================
+   3. انیمیشن ورود پلکانی محتوا
+   ========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* هدر (بدون تاخیر) */
+
+
+/* نقل قول روز (تاخیر 0.15s) */
+.quote-section {
+    animation: fadeInUp 0.8s ease-out 0.15s forwards;
+    opacity: 0; /* شروع از حالت مخفی */
+}
+
+/* جستجو (تاخیر 0.3s) */
+.search-container {
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+/* بازی حدس بزن (تاخیر 0.45s) */
+.game-section {
+    animation: fadeInUp 0.8s ease-out 0.45s forwards;
+    opacity: 0;
+}
+
+/* بخش‌های اصلی (تاخیر 0.6s) */
+.section {
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+}
+/* ==========================================
+   1. افکت Focus جستجو
+   ========================================== */
+   #search-input {
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    border: 2px solid #d4af37;
+    box-shadow:
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2),
+        inset 0 0 5px rgba(212, 175, 55, 0.2);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* ==========================================
+   2. Cursor Trail (رد موس)
+   ========================================== */
+.cursor-trail {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.5);
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+    animation: trailFade 0.3s forwards;
+}
+
+@keyframes trailFade {
+    to {
+        opacity: 0;
+        transform: scale(0.5) translateY(10px);
+    }
+}
+
+/* ==========================================
+   3. Hero بخش بالای سایت
+   ========================================== */
+.hero-section {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    background:
+        linear-gradient(rgba(26, 18, 11, 0.4), rgba(26, 18, 11, 0.8)),
+        url('https://images.unsplash.com/photo-1568322445389-f64ac2515020?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
+    box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    animation: heroReveal 1s ease-out;
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: 900;
+    color: #d4af37;
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.6),
+        0 0 40px rgba(212, 175, 55, 0.3);
+    margin-bottom: 15px;
+}
+
+.hero-subtitle {
+    font-size: 22px;
+    color: #e6d5b8;
+    margin-bottom: 30px;
+}
+
+@keyframes heroReveal {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   4. افکت ورق خوردن (برای بخش تاریخ)
+   ========================================== */
+/* انیمیشن ورود مودال شبیه ورق زدن کتاب */
+.modal-content.page-flip {
+    animation: pageFlip 0.6s ease-out both;
+}
+
+@keyframes pageFlip {
+    from {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+/* دکمه‌های ورق زدن */
+.flip-btn {
+    padding: 10px 20px;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    background: transparent;
+    color: #d4af37;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.flip-btn:hover {
+    background: #d4af37;
+    color: #2a231c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+/* ==========================================
+   افکت Focus جستجو و Dropdown
+   ========================================== */
+   #search-input {
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    border: 2px solid #d4af37;
+    box-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2),
+        inset 0 0 5px rgba(212, 175, 55, 0.2);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+
+/* ==========================================
+   Cursor Trail (رد موس)
+   ========================================== */
+.cursor-trail {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.5);
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes trailFade {
+    to { opacity: 0; transform: scale(0.5) translateY(10px); }
+}
+/* ==========================================
+   Hero بخش بالای سایت
+   ========================================== */
+   .hero-section {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    background:
+        linear-gradient(rgba(26, 18, 11, 0.4), rgba(26, 18, 11, 0.8)),
+        url('https://images.unsplash.com/photo-1568322445389-f64ac2515020?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
+    box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    animation: heroReveal 1s ease-out;
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: 900;
+    color: #d4af37;
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.6),
+        0 0 40px rgba(212, 175, 55, 0.3);
+    margin-bottom: 15px;
+}
+
+.hero-subtitle {
+    font-size: 22px;
+    color: #e6d5b8;
+    margin-bottom: 30px;
+}
+
+@keyframes heroReveal {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   افکت ورق خوردن (برای مودال‌ها)
+   ========================================== */
+.modal-content.page-flip {
+    animation: pageFlip 0.6s ease-out;
+}
+
+@keyframes pageFlip {
+    from {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+/* ====== هدر اصلی (کنار هم بودن سه بخش) ====== */
+.site-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #a67c52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-time {
+    width: 150px;
+    text-align: left;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.header-date {
+    width: 150px;
+    text-align: right;
+}
+
+.time-label {
+    font-size: 10px;
+    color: #b08d57;
+}
+
+#historical-clock {
+    font-size: 28px;
+    font-weight: 900;
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+#gregorian-date {
+    font-size: 16px;
+    color: #d4af37;
+    font-weight: 700;
+}
+
+#jalali-date {
+    font-size: 14px;
+    color: #b08d57;
+    margin-top: 5px;
+}
+
+/* تنظیمات موبایل (برای اینکه هدر در گوشی عمودی شود، اما در دسکتاپ افقی بماند) */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .header-time,
+    .header-date {
+        width: 100%;
+        text-align: center;
+    }
+}
+/* ==========================================
+   انیمیشن چشمک زدن عنوان تاریخ‌نامه (مثل بقیه)
+   ========================================== */
+   @keyframes pulseTitleGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(212, 175, 55, 0.8),
+            0 0 30px rgba(212, 175, 55, 0.4);
+    }
+}
+
+.site-title {
+    animation: pulseTitleGlow 5s ease-in-out infinite; /* هماهنگ با بقیه بخش‌ها */
+}
+/* ==========================================
+   افکت مودال: Blur پس‌زمینه + Fade کارت
+   ========================================== */
+/* پس‌زمینه مودال با Blur */
+.modal {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: opacity 0.3s ease;
+}
+
+/* کارت اطلاعات با Fade + Slide نرم */
+.modal-content {
+    animation: modalFadeIn 0.5s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ==========================================
+   انیمیشن ورود برای نقشه و تایم‌لاین
+   ========================================== */
+   #historical-map-wrapper,
+   #timeline-wrapper {
+       animation: fadeInUp 0.8s ease-out both;
+   }
+   /* ====== تست: بک گراند کتاب برای کارت‌ها ====== */
+.card {
+    /* رنگ پایه تیره */
+    background-color: #2a231c;
+    
+    /* بافت الیاف کاغذ (تکسچر کتاب) */
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    
+    /* ترکیب بافت با رنگ تیره تا دارک و کمرنگ شود */
+    background-blend-mode: multiply;
+    
+    /* سایه داخلی برای حس لبه‌های کتاب */
+    box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(212, 175, 55, 0.2),
+        0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+/* این کد را برای کارت‌های کشور هم اضافه می‌کنیم تا یکدست باشند */
+.country-card {
+    background-color: #2a231c;
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    background-blend-mode: multiply;
+}
+/* ====== تکسچر کتاب برای کارت‌های محتوا ====== */
+.card,
+.country-card,
+.timeline-info,
+.game-box,
+.quote-section {
+    /* رنگ پایه تیره */
+    background-color: #2a231c;
+    
+    /* بافت الیاف کاغذ */
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    background-size: cover;
+    background-repeat: repeat;
+    
+    /* ترکیب بافت با رنگ تیره تا دارک و کمرنگ بماند */
+    background-blend-mode: multiply;
+    
+    /* سایه داخلی برای حس فرورفتگی و لبه‌های کتاب */
+    box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.6),
+        0 0 10px rgba(212, 175, 55, 0.2),
+        0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+/* برای اینکه متن‌ها روی بافت به خوبی دیده شوند و لگ نخورند */
+.card-title,
+.country-name,
+.timeline-title {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+/* ====== یکسان‌سازی اندازه و استایل تاریخ شمسی و میلادی ====== */
+#gregorian-date,
+#jalali-date {
+    font-size: 16px; /* اندازه مشترک */
+    font-weight: 700; /* ضخامت مشترک */
+    color: #d4af37; /* رنگ مشترک */
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.6), 0 0 12px rgba(212, 175, 55, 0.3);
+    margin: 0; /* حذف فاصله اضافی */
+    line-height: 1.2;
+}
+
+/* اگر تاریخ شمسی را جداگانه نوشته بودید، این کد را هم اضافه کنید تا فاصله نداشته باشد */
+#jalali-date {
+    margin-top: 0; /* حذف فاصله بالای متن */
+}
+/* ====== تنظیم اندازه متن نقل قول روز ====== */
+.quote-text {
+    font-size: 20px; /* هم‌اندازه با دکمه حدس بزن */
+    line-height: 1.8;
+    color: #e6d5b8;
+    text-align: center;
+    margin-bottom: 15px;
+}
