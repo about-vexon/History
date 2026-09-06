@@ -1881,32 +1881,51 @@ body {
 
 /* این کد را برای کارت‌های کشور هم اضافه می‌کنیم تا یکدست باشند */
 .country-card {
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
     background-color: #2a231c;
     background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
     background-blend-mode: multiply;
+    box-shadow: 
+        0 0 3px rgba(212, 175, 55, 0.4),
+        0 0 6px rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+    animation: cardGlowPulse 5s ease-in-out infinite;
 }
 /* ====== تکسچر کتاب برای کارت‌های محتوا ====== */
+/* ====== کارت‌ها ====== */
 .card,
 .country-card,
 .timeline-info,
-.game-box,
-.quote-section {
-    /* رنگ پایه تیره */
+.game-box {
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
     background-color: #2a231c;
-    
-    /* بافت الیاف کاغذ */
     background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    background-size: cover;
-    background-repeat: repeat;
-    
-    /* ترکیب بافت با رنگ تیره تا دارک و کمرنگ بماند */
     background-blend-mode: multiply;
-    
-    /* سایه داخلی برای حس فرورفتگی و لبه‌های کتاب */
-    box-shadow: 
-        inset 0 0 20px rgba(0, 0, 0, 0.6),
-        0 0 10px rgba(212, 175, 55, 0.2),
-        0 0 20px rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+    animation: cardGlowPulse 5s linear infinite;
+}
+
+/* ====== نور پالسی: واضح ولی بدون خط ====== */
+@keyframes cardGlowPulse {
+    0% {
+        filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.2));
+    }
+    50% {
+        filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
+    }
+    100% {
+        filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.2));
+    }
+}
+/* ====== انیمیشن خطی (Linear) ====== */
+.card,
+.country-card,
+.timeline-info,
+.game-box {
+    animation: cardGlowPulse 5s linear infinite;
 }
 
 /* برای اینکه متن‌ها روی بافت به خوبی دیده شوند و لگ نخورند */
@@ -1937,4 +1956,17 @@ body {
     color: #e6d5b8;
     text-align: center;
     margin-bottom: 15px;
+}
+/* ====== انیمیشن بسته شدن نرم ====== */
+.fade-out {
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* انیمیشن بسته شدن مودال */
+.modal.closing {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
