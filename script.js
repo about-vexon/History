@@ -84,7 +84,7 @@ function openCountryModal(country) {
 // ====== افکت تایپ متن ======
 let typewriterInterval = null;
 
-function typeText(element, text, speed = 15) {
+function typeText(element, text, speed = 40) {
     if (typewriterInterval) clearInterval(typewriterInterval);
     
     element.textContent = '';
